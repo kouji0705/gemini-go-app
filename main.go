@@ -27,7 +27,7 @@ func main() {
 	defer client.Close()
 
 	// PDFファイル名
-	fileName := "sample.pdf"
+	fileName := "mizuhobank_corporate.pdf"
 
 	// ファイルの存在確認
 	f, err := os.Open(fileName)
@@ -60,12 +60,12 @@ func main() {
 	}
 
 	// モデル設定
-	model := client.GenerativeModel("gemini-1.5-flash")
+	model := client.GenerativeModel("gemini-2.5-flash")
 
 	fmt.Println("\n3. AIに質問中...")
 	resp, err := model.GenerateContent(ctx,
 		genai.FileData{URI: uploadFile.URI},
-		genai.Text("この資料の要点を、技術者向けに箇条書きで3点にまとめてください。"),
+		genai.Text("日本の小売業はどうなりますか？？"),
 	)
 	if err != nil {
 		log.Fatal(err)

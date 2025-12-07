@@ -6,9 +6,10 @@ services:
     container_name: gemini-go-app
     volumes:
       - .:/app
-    # --- 変更点ここから ---
-    # environmentセクションを削除して、代わりに以下を書きます
     env_file:
       - .env
-    # --- 変更点ここまで ---
-    command: go run main.go
+    # --- 変更点 ---
+    # コンテナを終了させずに常駐させる設定
+    tty: true
+    # 何もしないで待機し続けるコマンド
+    command: tail -f /dev/null
