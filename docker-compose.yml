@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: gemini-go-app
+    volumes:
+      - .:/app
+    # --- 変更点ここから ---
+    # environmentセクションを削除して、代わりに以下を書きます
+    env_file:
+      - .env
+    # --- 変更点ここまで ---
+    command: go run main.go
